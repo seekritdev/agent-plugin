@@ -136,3 +136,6 @@ list in the file, pin at least two admins, and commit it.
 
 - [references/proxy-config.md](references/proxy-config.md) — annotated config
   for both modes, refresh intervals, and the fleet ceiling.
+- <https://seekrit.dev/docs/guides/frameworks> — the exact base-URL and API-key
+  argument to change in LangGraph, Mastra, Pydantic AI, the AI SDK, CrewAI,
+  LlamaIndex, and both Agents SDKs.
