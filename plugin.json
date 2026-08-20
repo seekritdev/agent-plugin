@@ -1,0 +1,22 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "seekrit",
+  "version": "0.1.0",
+  "description": "End-to-end encrypted secrets for agents: store and inject credentials without ever writing a value to disk, and give tools API keys they cannot read.",
+  "author": {
+    "name": "seekrit",
+    "url": "https://seekrit.dev"
+  },
+  "homepage": "https://seekrit.dev/docs/guides/ai-agents",
+  "repository": "https://github.com/seekritdev/agent-plugin",
+  "license": "MIT",
+  "keywords": [
+    "secrets",
+    "credentials",
+    "api-keys",
+    "dotenv",
+    "encryption",
+    "zero-knowledge",
+    "egress-proxy"
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/mcp.schema.json",
+  "mcpServers": {
+    "seekrit": {
+      "type": "stdio",
+      "command": "npx",
+      "args": ["-y", "@seekrit/mcp"]
+    },
+    "seekrit-cloud": {
+      "type": "streamable-http",
+      "url": "https://mcp.seekrit.dev/mcp"
+    }
+  }
+}
