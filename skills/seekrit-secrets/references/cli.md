@@ -45,10 +45,14 @@ seekrit secrets rm NAME
 Omit the value argument so it arrives on stdin, or use `--file` for a PEM or
 JSON credential. Passing the value inline puts it in shell history.
 
+None of these name an environment because a service token is bound to one — the
+commands above are complete as written. Add `--app <slug> --env <slug>` only to
+reach a different environment (as a signed-in human always must).
+
 ## Structure
 
 ```bash
-seekrit init                              # writes seekrit.json for this project
+seekrit init --org acme --app storefront # writes seekrit.json for this project
 seekrit app create / list / show
 seekrit env create / list / groups
 seekrit group create / env create         # shared secret bags and their slices
