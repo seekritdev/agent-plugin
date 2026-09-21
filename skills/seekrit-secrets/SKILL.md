@@ -79,6 +79,11 @@ set_secret { app: "storefront", env: "production", name: "STRIPE_SECRET_KEY", va
 ```
 
 Then confirm by name only: "stored `STRIPE_SECRET_KEY` in storefront/production."
+**Unless the result says `queued: true`** — some environments require human
+approval, and then nothing was stored: the secret still holds its old value and
+a person has to approve the change (`changeRequestId` in the result). Say that,
+plainly, instead of reporting a write. Never retry the write to get around it;
+it will queue again.
 A value can reference another with `${OTHER_SECRET}`, so build connection
 strings from parts rather than duplicating a password.
 
