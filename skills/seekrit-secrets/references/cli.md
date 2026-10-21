@@ -7,7 +7,8 @@ behaviour and no Node dependency.
 ## Authenticate
 
 ```bash
-seekrit login --client-id <id> --client-secret <secret>   # machine credential
+seekrit init --org-name "Acme Storefront" --yes           # no credential yet: sign up + set the project up
+seekrit login --client-id <id> --client-secret <secret>   # machine credential from an MCP signup
 seekrit login --token skt_…                               # existing service token
 seekrit login                                             # browser approval, for a human
 seekrit whoami
@@ -52,7 +53,8 @@ reach a different environment (as a signed-in human always must).
 ## Structure
 
 ```bash
-seekrit init --org acme --app storefront # writes seekrit.json for this project
+seekrit init                              # app named after the project + development env + seekrit.json
+seekrit init --org acme --app storefront # link an existing org/app instead
 seekrit app create / list / show
 seekrit env create / list / groups
 seekrit group create / env create         # shared secret bags and their slices

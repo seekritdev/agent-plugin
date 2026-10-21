@@ -39,9 +39,13 @@ one step. The `seekrit-paperclip` skill covers the rest.
 
 ## No account yet?
 
-Connecting needs none. Ask your agent to call `signup` on the hosted server — it
-mints an organization and a machine credential in-band, no browser and no card —
-then persist it with `seekrit login --client-id … --client-secret …`.
+Connecting needs none. In a project directory,
+`npx -y @seekrit/cli init --org-name "<the real project>" --yes` signs up, saves
+the machine credential where both servers read it, and creates an app with a
+`development` environment. Over MCP alone, ask your agent to call `signup` on
+the hosted server instead — it mints an organization and a machine credential
+in-band, no browser and no card — then persist it with
+`seekrit login --client-id … --client-secret …`.
 
 ## Notes
 

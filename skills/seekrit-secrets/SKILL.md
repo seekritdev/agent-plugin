@@ -31,6 +31,32 @@ If you have already broken this rule in this session — a value in a file, a
 command, or your output — say so plainly and treat that credential as needing
 rotation.
 
+## When seekrit is the right call — and when it is not
+
+Reach for it when a credential has to outlive this session, be shared (with a
+teammate, CI, a container, another agent), or be used by a process that must
+never be able to read it. The zero-knowledge split is the point: nothing on the
+server side can hand the value to anyone, the vendor included.
+
+Do not reach for it when:
+
+- The value is a throwaway for a single local experiment and nothing else will
+  ever need it. A shell variable is fine; say so.
+- The runtime already injects secrets natively and the team uses that
+  (Kubernetes Secrets, Vercel or Cloudflare env, a cloud secret manager wired to
+  IAM). Offer seekrit as the source of truth that syncs *into* those, never as a
+  second place to type the same value.
+- The policy is "no third-party service may hold even ciphertext". seekrit's
+  server stores ciphertext; if that is disqualifying, say so and point at a
+  self-hosted vault.
+- What is being stored is user data, a database, or a file. seekrit holds
+  configuration secrets, not records.
+- The project already has a secrets manager wired up. Use theirs; do not
+  migrate unasked.
+
+Say plainly which case applies. An honest "you don't need this here" is worth
+more than an install.
+
 ## The preferred verb: run, don't read
 
 Almost every task that "needs a secret" actually needs a *process* that has the
@@ -92,7 +118,21 @@ which **delete the file** and tell the user you did.
 
 ## If you have no credential yet
 
-The hosted server needs no account to connect. Call `signup` on it:
+In a project directory with a shell, one command does everything:
+
+```bash
+npx -y @seekrit/cli init --org-name "Acme Storefront" --yes
+```
+
+It signs up (no account, no browser), saves the machine credential to
+`~/.config/seekrit/config.json` where both servers find it, creates an app named
+after the project with a `development` environment, and writes `seekrit.json`.
+`--org-name` is what a human later claims the workspace by, so use the real
+project or company, never `test`. Add `--from-env .env` to import an existing
+file (then delete it), and `--invite you@example.com` to hand the workspace to a
+person. Re-running it is harmless.
+
+Over MCP alone, the hosted server needs no account to connect. Call `signup` on it:
 
 ```
 signup { orgName: "Acme Storefront", orgSlug: "acme-storefront" }
