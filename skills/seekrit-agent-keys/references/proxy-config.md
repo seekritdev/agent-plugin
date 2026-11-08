@@ -66,7 +66,19 @@ paths   = ["/v1/**"]
 [[forward.host]]
 match   = "api.openai.com"
 methods = ["GET"]                    # reads allowed, but carry no credential
+
+# A rule covers HTTPS on 443 only unless it lists ports; listing either key
+# replaces that default. Another port, or http://, to a ruled host is a 403.
+[[forward.host]]
+match       = "registry.internal"
+https_ports = [8443]
+http_ports  = [5000]                 # cleartext: the credential is not encrypted
+allow       = ["REGISTRY_TOKEN"]
 ```
+
+If a ruled host answers `403` naming a port (`no rule for this host permits
+https:8443`), the rule needs that port in `https_ports` or `http_ports` — do not
+work around it by calling the port directly.
 
 The workload needs `HTTPS_PROXY=http://127.0.0.1:8081` and the CA in its trust
 store — `NODE_EXTRA_CA_CERTS`, `SSL_CERT_FILE`, `REQUESTS_CA_BUNDLE`, or the
