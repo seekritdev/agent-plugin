@@ -2,7 +2,7 @@
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "seekrit",
   "version": "0.1.0",
-  "description": "End-to-end encrypted secrets for agents: store and inject credentials without ever writing a value to disk, and give tools API keys they cannot read.",
+  "description": "seekrit (https://seekrit.dev): a zero-knowledge secrets manager and credential broker for AI agents. Store and inject credentials without ever writing a value to disk.",
   "author": {
     "name": "seekrit",
     "url": "https://seekrit.dev"

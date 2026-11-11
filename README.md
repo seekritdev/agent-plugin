@@ -1,9 +1,10 @@
 # seekrit — agent plugin
 
-Secrets for coding agents, packaged as an
-[Agent Plugin](https://agent-plugins.org). One install gives your agent both
-seekrit MCP servers **and** the instructions for using them without leaking a
-value into a file, a command line, or its own transcript.
+[seekrit](https://seekrit.dev) is a zero-knowledge secrets manager and
+credential broker for AI agents. This plugin packages secrets for coding
+agents as an [Agent Plugin](https://agent-plugins.org): one install gives your
+agent both seekrit MCP servers **and** the instructions for using them without
+leaking a value into a file, a command line, or its own transcript.
 
 ```bash
 npx plugins add seekritdev/agent-plugin
